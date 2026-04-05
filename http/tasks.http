@@ -1,0 +1,56 @@
+### В заголовок Authorization подставить свой полученный токен
+
+
+### Создать задачу (автор = текущий пользователь)
+POST http://localhost:8080/api/tasks
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJvbGVnX3NtaXJub3YiLCJyb2xlIjoiVVNFUiIsImlhdCI6MTc3NTM5NDc2OSwiZXhwIjoxNzc1NDgxMTY5fQ.IxjGQ2-JJjbTDcwZDqKJZ-t1FHJSnsZjSq2Sh5ytGF5zNEzhfmYRDDoWU5GlWlot4TyyIErG2CyGi5zszRDiaA
+
+{
+  "title": "Создать задачу",
+  "description": "Создание задачи",
+  "status": "TODO",
+  "priority": "HIGH",
+  "assigneeId": null
+}
+
+### Получить задачу по id (подставьте id из ответа create)
+GET http://localhost:8080/api/tasks/1
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ8.eyJzdWIiOiJvbGVnX3NtaXJub3YiLCJyb2xlIjoiVVNFUiIsImlhdCI6MTc3NTM5NDg1OSwiZXhwIjoxNzc1NDgxMjU5fQ.WpUlcOz6kLWGjHaZ9qinU-HO5xgvg4_xx4BnO1uHZ5B1Rif4ZjFcQrV3RQCrbUmy-yfdh3is16crOrqDeNoPJQ
+
+### Обновить задачу (только автор или ADMIN)
+PUT http://localhost:8080/api/tasks/1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJvbGVnX3NtaXJub3YiLCJyb2xlIjoiVVNFUiIsImlhdCI6MTc3NTM5NTA2MSwiZXhwIjoxNzc1NDgxNDYxfQ.tha0gPeto3NlFWif1KbKJciI7XzhWG-xlckQPe5WgdPPiMuXRuwJXCWSdd8HtpGUVcNfY87JqC72a8ApuX5ing
+
+{
+  "title": "Обновить задачу как-нибудь",
+  "description": "Проверено",
+  "status": "IN_PROGRESS",
+  "priority": "MEDIUM",
+  "assigneeId": null
+}
+
+### Удалить задачу (только автор или ADMIN)
+DELETE http://localhost:8080/api/tasks/2
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJvbGVnX3NtaXJub3YiLCJyb2xlIjoiVVNFUiIsImlhdCI6MTc3NTM5NTA2MSwiZXhwIjoxNzc1NDgxNDYxfQ.tha0gPeto3NlFWif1KbKJciI7XzhWG-xlckQPe5WgdPPiMuXRuwJXCWSdd8HtpGUVcNfY87JqC72a8ApuX5ing
+
+### Список всех задач
+GET http://localhost:8080/api/tasks
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJvbGVnX3NtaXJub3YiLCJyb2xlIjoiVVNFUiIsImlhdCI6MTc3NTM5NDg1OSwiZXhwIjoxNzc1NDgxMjU5fQ.WpUlcOz6kLWGjHaZ9qinU-HO5xgvg4_xx4BnO1uHZ5B1Rif4ZjFcQrV3RQCrbUmy-yfdh3is16crOrqDeNoPJQ
+
+### Фильтр по статусу
+GET http://localhost:8080/api/tasks?status=IN_PROGRESS
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJvbGVnX3NtaXJub3YiLCJyb2xlIjoiVVNFUiIsImlhdCI6MTc3NTM5NDg1OSwiZXhwIjoxNzc1NDgxMjU5fQ.WpUlcOz6kLWGjHaZ9qinU-HO5xgvg4_xx4BnO1uHZ5B1Rif4ZjFcQrV3RQCrbUmy-yfdh3is16crOrqDeNoPJQ
+
+### Фильтр по исполнителю
+GET http://localhost:8080/api/tasks?assigneeId=2
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJvbGVnX3NtaXJub3YiLCJyb2xlIjoiVVNFUiIsImlhdCI6MTc3NTM5NDg1OSwiZXhwIjoxNzc1NDgxMjU5fQ.WpUlcOz6kLWGjHaZ9qinU-HO5xgvg4_xx4BnO1uHZ5B1Rif4ZjFcQrV3RQCrbUmy-yfdh3is16crOrqDeNoPJQ
+
+### Фильтр по автору (id пользователя)
+GET http://localhost:8080/api/tasks?authorId=1
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJvbGVnX3NtaXJub3YiLCJyb2xlIjoiVVNFUiIsImlhdCI6MTc3NTM5NDg1OSwiZXhwIjoxNzc1NDgxMjU5fQ.WpUlcOz6kLWGjHaZ9qinU-HO5xgvg4_xx4BnO1uHZ5B1Rif4ZjFcQrV3RQCrbUmy-yfdh3is16crOrqDeNoPJQ
+
+### Комбинация фильтров
+GET http://localhost:8080/api/tasks?status=IN_PROGRESS&authorId=1&assigneeId=2
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJvbGVnX3NtaXJub3YiLCJyb2xlIjoiVVNFUiIsImlhdCI6MTc3NTQxMjg3MiwiZXhwIjoxNzc1NDk5MjcyfQ.T7NL0boW7u0QZ_5igrUeXstTsmQep9fgiSaAbBbGvIhOxDaDakQ2Im9-6VvnY17QPnt9qw0Zutow4VSvYltXPg

@@ -1,0 +1,14 @@
+spring:
+  docker:
+    compose:
+      enabled: false
+  flyway:
+    enabled: true
+  jpa:
+    hibernate:
+      ddl-auto: validate
+
+app:
+  jwt:
+    secret: test-secret-key-must-be-at-least-256-bits-for-hs256-algorithm-please!!
+    expiration-hours: 24

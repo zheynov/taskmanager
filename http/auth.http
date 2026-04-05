@@ -1,0 +1,27 @@
+### Регистрация нового пользователя (роль USER)
+POST http://localhost:8080/api/auth/register
+Content-Type: application/json
+
+{
+  "username": "oleg_smirnov",
+  "email": "oleg@primer.local",
+  "password": "secret12"
+}
+
+### Вход под юзером, получение токена
+POST http://localhost:8080/api/auth/login
+Content-Type: application/json
+
+{
+  "username": "oleg_smirnov",
+  "password": "secret12"
+}
+
+### Вход под админом
+POST http://localhost:8080/api/auth/login
+Content-Type: application/json
+
+{
+  "username": "igor_semenov",
+  "password": "password"
+}
