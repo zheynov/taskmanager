@@ -70,7 +70,7 @@ docker compose --profile full down
 mvn clean package -DskipTests
 ```
 
-1. Далее выполните:
+4. Далее выполните:
 
 ```bash
 mvn spring-boot:run -Dspring-boot.run.jvmArguments="-Dspring.docker.compose.enabled=false"
